@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<OpenDRIVE>
+  <header revMajor="1" revMinor="2" name="" version="1.00" date="Thu Sep 2 20:31:10 2010" north="0.0" south="0.0" east="0.0" west="0.0" />
+  <road name="R1" length="1742.947451" id="1" junction="-1">
+    <planView>
+      <geometry s="0.0" x="40.0" y="450.0" hdg="0.0" length="800.0">
+        <line />
+      </geometry>
+      <geometry s="800.0" x="840.0" y="450.0" hdg="2.089942" length="403.112887">
+        <line />
+      </geometry>
+      <geometry s="1203.112887" x="640.0" y="100.0" hdg="-2.819842" length="316.227766">
+        <line />
+      </geometry>
+      <geometry s="1519.340653" x="340.0" y="200.0" hdg="2.677945" length="223.606798">
+        <line />
+      </geometry>
+    </planView>
+    <lanes>
+      <laneSection s="0.0">
+        <right>
+          <lane id="-1" type="driving" level="0">
+            <link>
+            </link>
+            <width sOffset="0.0" a="10.0" b="0.0" c="0.0" d="0.0" />
+          </lane>
+          <lane id="-2" type="driving" level="0">
+            <link>
+            </link>
+            <width sOffset="0.0" a="10.0" b="0.0" c="0.0" d="0.0" />
+          </lane>
+        </right>
+      </laneSection>
+    </lanes>
+  </road>
+</OpenDRIVE>
