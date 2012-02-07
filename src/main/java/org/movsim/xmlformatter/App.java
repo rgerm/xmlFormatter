@@ -27,24 +27,24 @@ public class App {
             builder.setFeature("http://apache.org/xml/features/nonvalidating/load-dtd-grammar", false);
             builder.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
             Document document = builder.build(getInputSourceFromFilename(args[0]));
-            
-            document = manipulateDocument(document);
-            
+
+            // document = manipulateDocument(document);
+
             final XMLOutputter outputter = new XMLOutputter();
             Format format = Format.getPrettyFormat();
             format.setIndent("    ");
             outputter.setFormat(format);
 
             final PrintWriter writer = getWriter(args[0]);
-                outputter.output(document, writer);
+            outputter.output(document, writer);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JDOMException e) {
             e.printStackTrace();
         }
-      
+
     }
-    
+
     @SuppressWarnings({ "unchecked", "rawtypes" })
     private static Document manipulateDocument(Document document) {
         final Element root = document.getRootElement();
@@ -56,7 +56,7 @@ public class App {
         int indexOutput = sim.indexOf(output);
         if (routes != null) {
             sim.add(indexOutput, routes.detach());
-            System.out.println("detached routes at: "+indexOutput);
+            System.out.println("detached routes at: " + indexOutput);
         }
         return document;
     }
@@ -66,11 +66,11 @@ public class App {
             final PrintWriter fstr = new PrintWriter(new BufferedWriter(new FileWriter(filename, false)));
             return fstr;
         } catch (final java.io.IOException e) {
-             e.printStackTrace();
+            e.printStackTrace();
         }
         return null;
     }
-    
+
     public static InputSource getInputSourceFromFilename(String filename) {
         final File inputFile = new File(filename);
         InputSource inputSource = null;
