@@ -28,11 +28,12 @@ public class App {
             builder.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
             Document document = builder.build(getInputSourceFromFilename(args[0]));
 
-            // document = manipulateDocument(document);
+//            document = manipulateDocument(document);
 
             final XMLOutputter outputter = new XMLOutputter();
             Format format = Format.getPrettyFormat();
             format.setIndent("    ");
+            format.setLineSeparator("\n");
             outputter.setFormat(format);
 
             final PrintWriter writer = getWriter(args[0]);
@@ -45,26 +46,30 @@ public class App {
 
     }
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @SuppressWarnings({ "unchecked", "unused" })
     private static Document manipulateDocument(Document document) {
+        
+        //Changes order of width and link Element
         final Element root = document.getRootElement();
-        Element simulation = root.getChild("SIMULATION");
-        final Element output = simulation.getChild("OUTPUT");
-        Element routes = output.getChild("ROUTES");
-        output.removeChild("ROUTES");
-        List sim = simulation.getChildren();
-        int indexOutput = sim.indexOf(output);
-        if (routes != null) {
-            sim.add(indexOutput, routes.detach());
-            System.out.println("detached routes at: " + indexOutput);
+        List<Element> roads = root.getChildren("road");
+        for (Element road : roads) {
+            Element lanes = road.getChild("lanes");
+            Element laneSection = lanes.getChild("laneSection");
+            Element right = laneSection.getChild("right");
+            List<Element> lanesEl = right.getChildren("lane");
+            for (Element lane : lanesEl) {
+                Element width = lane.getChild("width");
+                lane.removeChild("width");
+                lane.addContent(width);
+            }
         }
         return document;
     }
 
     public static PrintWriter getWriter(String filename) {
         try {
-            final PrintWriter fstr = new PrintWriter(new BufferedWriter(new FileWriter(filename, false)));
-            return fstr;
+            final PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(filename, false)));
+            return writer;
         } catch (final java.io.IOException e) {
             e.printStackTrace();
         }
