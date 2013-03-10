@@ -1,0 +1,12 @@
+/.settings
+/.classpath
+target/
+bin/
+*.csv
+*.DS_Store
+*.internal_xml
+*.log
+*.log.*
+*.eps
+*~
+/.project
