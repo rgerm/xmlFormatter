@@ -1,5 +1,5 @@
-/.settings
-/.classpath
+.settings
+.classpath
 target/
 bin/
 *.csv
@@ -9,4 +9,4 @@ bin/
 *.log.*
 *.eps
 *~
-/.project
+.project
